@@ -87,10 +87,26 @@ export default class Widget {
 	}
 
 	make_widget() {
+		//ibrahim
+		let shortcut_icon_image = "style='background-repeat: no-repeat;background-size: 20% 100%;padding-left: 25%; \
+		background-position: left ;background-image: url( " +  this.shortcut_icon_image  + " );'";
+
+		let link_icon_image = "style='background-repeat: no-repeat;background-size: 25%; \
+		background-position-x: right ;background-image: url( " +  this.link_icon_image  + " );'";
+		if (["ar", "he"].indexOf(frappe.boot.lang) >= 0) {
+			shortcut_icon_image = "style='background-repeat: no-repeat;background-size: 20% 100%;padding-right: 25%; \
+			background-position: right ;background-image: url( " +  this.shortcut_icon_image  + " );'";
+	
+			link_icon_image = "style='background-repeat: no-repeat;background-size: 25%; \
+			background-position-x: left ;background-image: url( " +  this.link_icon_image  + " );'";
+		}
+
 		this.widget = $(`<div class="widget
 			${ this.hidden ? "hidden" : " " }
-			${ this.shadow ? "widget-shadow" : " " }
-		" data-widget-name="${this.name ? this.name : ''}">
+			${ this.shadow ? "widget-shadow" : " " } "
+			${ this.shortcut_icon_image ? shortcut_icon_image : " "} 
+			${ this.link_icon_image ? link_icon_image : " "} 
+		    data-widget-name="${this.name ? this.name : ''}">
 			<div class="widget-head">
 				<div>
 					<div class="widget-title ellipsis"></div>

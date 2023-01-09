@@ -95,12 +95,24 @@ frappe.views.Workspace = class Workspace {
 			.appendTo(sidebar_section);
 
 		const get_sidebar_item = function (item) {
+			//ibrahim
+			let workspace_icon_image = "style='background-repeat: no-repeat;background-size: 25%;padding-left: 30%; \
+			background-position-x: left ;background-image: url( " +  item.icon  + " );'";
+	
+			if (["ar", "he"].indexOf(frappe.boot.lang) >= 0) {
+				workspace_icon_image = "style='background-repeat: no-repeat;background-size: 25%;padding-right: 30%; \
+				background-position-x: right ;background-image: url( " +  item.icon  + " );'";
+			}
+	
 			return $(`
 				<a
 					href="/app/${frappe.router.slug(item.name)}"
 					class="desk-sidebar-item standard-sidebar-item ${item.selected ? "selected" : ""}"
+					${ item.icon ? workspace_icon_image : " "} 
 				>
+					<!--
 					<span>${frappe.utils.icon(item.icon || "folder-normal", "md")}</span>
+					-->
 					<span class="sidebar-item-label">${item.label || item.name}<span>
 				</a>
 			`);
@@ -361,6 +373,7 @@ class DesktopPage {
 			type: "chart",
 			columns: 1,
 			class_name: "widget-charts",
+			hidden: Boolean(this.onboarding_widget),
 			options: {
 				allow_sorting: this.allow_customization,
 				allow_create: this.allow_customization,

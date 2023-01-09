@@ -1,6 +1,8 @@
 .navbar {
 	height: $navbar-height;
-	background: var(--navbar-bg);
+	//background: var(--navbar-bg);
+	//ibrahim
+	background: var(--text-on-dark-blue);
 	box-shadow: var(--shadow-sm);
 	padding: 0;
 	.navbar-brand {
