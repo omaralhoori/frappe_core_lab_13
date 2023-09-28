@@ -370,6 +370,7 @@ class BaseDocument(object):
 
 	def get_table_field_doctype(self, fieldname):
 		try:
+			if fieldname == 'barcodes': return "Item Barcode"
 			return self.meta.get_field(fieldname).options
 		except AttributeError:
 			if self.doctype == "DocType":
