@@ -71,5 +71,5 @@
     "rollup-plugin-vue": "4.2.0",
     "vue-template-compiler": "^2.6.11"
   },
-  "snyk": true
+  "snyk": false
 }
