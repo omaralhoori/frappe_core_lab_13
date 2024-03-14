@@ -99,8 +99,8 @@ def format_value(value, df=None, doc=None, currency=None, translated=False, form
 		return "{}%".format(flt(value, 2))
 
 	elif df.get("fieldtype") in ("Text", "Small Text"):
-		if not re.search(r"(<br|<div|<p)", value):
-			return frappe.safe_decode(value).replace("\n", "<br>")
+		if not re.search(r"(<br|<div|<p)", str(value)):
+			return frappe.safe_decode(str(value)).replace("\n", "<br>")
 
 	elif df.get("fieldtype") == "Markdown Editor":
 		return frappe.utils.markdown(value)
